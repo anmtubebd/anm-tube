@@ -24,5 +24,11 @@
         "genre": "Action",
         "link": "https://t.me/example_link"
     },
-    {}
+    {},
+    {
+        "title": "Alya",
+        "img": "https://m.media-amazon.com/images/M/MV5BNjg0YTVjNTItZTI1ZC00MDZlLTllYjQtMDY0ODMxNDdlYjY3XkEyXkFqcGc@._V1_.jpg",
+        "genre": "Action",
+        "link": "https://t.me/theanmking"
+    }
 ]
