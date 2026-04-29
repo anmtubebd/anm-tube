@@ -1,0 +1,20 @@
+[
+    {
+        "title": "One Piece",
+        "img": "https://m.media-amazon.com/images/M/MV5BODCwNWE3OTItMDdmZC00MjA1LWEyMzYtYmU5MzcyM2RkMWFmXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+        "genre": "Action",
+        "link": "https://t.me/your_video_link_1"
+    },
+    {
+        "title": "Naruto",
+        "img": "https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00YzQ4LWE3ZTEtZWMzOTdmN2Y5YWNmXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg",
+        "genre": "Action",
+        "link": "https://t.me/your_video_link_2"
+    },
+    {
+        "title": "Demon Slayer",
+        "img": "https://m.media-amazon.com/images/M/MV5BNGYyZGM5MGMtYTY2Ni00M2Y1LWIzNjQtYWVlM2M1NjM0YzLhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+        "genre": "Action",
+        "link": "https://t.me/your_video_link_3"
+    }
+]
