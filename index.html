@@ -13,7 +13,7 @@
         .page { display: none; }
         .page.active { display: block; }
 
-        /* ব্যানার স্লাইডার আপডেট করা ডিজাইন */
+        /* ব্যানার স্লাইডার - মোবাইল ও ল্যাপটপ অ্যাডজাস্টমেন্ট */
         .slider-container { 
             width: 100%; 
             position: relative; 
@@ -22,19 +22,19 @@
             border-bottom: 1px solid #222;
         }
 
-        /* মোবাইলের জন্য ব্যানারের সাইজ */
+        /* মোবাইলের জন্য স্লাইডার (অপরিবর্তিত) */
         @media (max-width: 767px) {
             .slider-container {
-                aspect-ratio: 16 / 9; /* মোবাইলে সুন্দর দেখানোর জন্য স্ট্যান্ডার্ড রেশিও */
+                aspect-ratio: 16 / 9; 
             }
         }
 
-        /* ল্যাপটপ/ডেস্কটপের জন্য ব্যানারের সাইজ */
+        /* ল্যাপটপের জন্য স্লাইডার ফিক্স (আপনার ছবি অনুযায়ী সংশোধিত) */
         @media (min-width: 1024px) { 
             .slider-container { 
-                max-width: 900px; /* ল্যাপটপে ব্যানার এর চওড়া কমিয়ে আনা হয়েছে */
-                margin: 15px auto; /* মাঝখানে রাখার জন্য */
-                height: 300px; /* ল্যাপটপে উচ্চতা ফিক্সড করা হয়েছে যাতে বেশি বড় না লাগে */
+                max-width: 1000px; /* ল্যাপটপে ব্যানার এরিয়া নির্দিষ্ট করা হলো */
+                margin: 15px auto; 
+                height: 380px; /* ল্যাপটপে হাইট ফিক্সড করা হয়েছে যাতে কেটে না যায় */
                 border-radius: 12px;
             } 
         }
@@ -45,7 +45,14 @@
         .slide img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* ইমেজ যাতে চারদিকে সুন্দরভাবে মানিয়ে যায় */
+            object-fit: cover; 
+        }
+
+        /* ল্যাপটপে যাতে ইমেজের লেখা বা মূল অংশ না কাটে */
+        @media (min-width: 1024px) {
+            .slide img {
+                object-fit: fill; /* ল্যাপটপে পুরো ইমেজটি ফ্রেমের ভেতর দেখাবে */
+            }
         }
 
         /* গ্রিড ডিজাইন */
@@ -165,7 +172,6 @@
             if (selectedGenres.includes(genre)) selectedGenres = selectedGenres.filter(g => g !== genre);
             else selectedGenres.push(genre);
             
-            // বাটন কালার টগল
             if(selectedGenres.includes(genre)) btn.style.background = "#ff3e3e";
             else btn.style.background = "#1a1a1a";
 
