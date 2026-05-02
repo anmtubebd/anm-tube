@@ -1,46 +1,20 @@
 [
     {
         "title": "One Piece",
-        "img": "https://i.ebayimg.com/00/s/MTYwMFgxMTI5/z/bosAAOSwLB5egNBa/$_57.JPG?set_id=8800005007",
-        "genre": "Action",
+        "img": "https://4kwallpapers.com/images/wallpapers/one-piece-season-1-2048x2048-18913.jpg",
+        "genre": "Action, Shonen, Adventure",
         "link": "https://t.me/your_video_link_1"
     },
     {
         "title": "Naruto",
         "img": "https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00YzQ4LWE3ZTEtZWMzOTdmN2Y5YWNmXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg",
-        "genre": "Action",
+        "genre": "Action, Shonen, Martial Arts",
         "link": "https://t.me/your_video_link_2"
     },
     {
-        "title": "Demon Slayer",
-        "img": "https://m.media-amazon.com/images/M/MV5BNGYyZGM5MGMtYTY2Ni00M2Y1LWIzNjQtYWVlM2M1NjM0YzLhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-        "genre": "Action",
-        "link": "https://t.me/your_video_link_3"
-    },
-    {},
-    {
-        "title": "????? ?????",
-        "img": "https://images8.alphacoders.com/131/1316410.jpeg",
-        "genre": "Action",
-        "link": "https://t.me/example_link"
-    },
-    {},
-    {
         "title": "Alya",
         "img": "https://m.media-amazon.com/images/M/MV5BNjg0YTVjNTItZTI1ZC00MDZlLTllYjQtMDY0ODMxNDdlYjY3XkEyXkFqcGc@._V1_.jpg",
-        "genre": "Action",
-        "link": "https://t.me/theanmking"
-    },
-    {
-        "title": "Alya",
-        "img": "https://m.media-amazon.com/images/M/MV5BNjg0YTVjNTItZTI1ZC00MDZlLTllYjQtMDY0ODMxNDdlYjY3XkEyXkFqcGc@._V1_.jpg",
-        "genre": "Action",
-        "link": "https://t.me/theanmking"
-    },
-    {
-        "title": "Alya",
-        "img": "https://m.media-amazon.com/images/M/MV5BNjg0YTVjNTItZTI1ZC00MDZlLTllYjQtMDY0ODMxNDdlYjY3XkEyXkFqcGc@._V1_.jpg",
-        "genre": "Action",
+        "genre": "Romance, School, Slice of Life",
         "link": "https://t.me/theanmking"
     }
 ]
