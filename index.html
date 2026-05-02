@@ -15,45 +15,41 @@
 
         /* স্লাইডার */
         .slider-container { width: 100%; position: relative; overflow: hidden; background: #000; border-bottom: 1px solid #222; aspect-ratio: 16 / 9; }
-        @media (min-width: 1024px) { .slider-container { aspect-ratio: 21 / 9; max-height: 400px; } }
         .slider { display: flex; width: 400%; height: 100%; transition: transform 0.5s ease-in-out; }
-        .slide { width: 25%; height: 100%; cursor: pointer; }
-        .slide img { width: 100%; height: 100%; object-fit: contain; display: block; background-color: #000; }
+        .slide { width: 25%; height: 100%; }
+        .slide img { width: 100%; height: 100%; object-fit: contain; background-color: #000; }
 
         /* গ্রিড */
         .section-title { padding: 15px; font-size: 18px; font-weight: bold; color: var(--primary); }
         .poster-grid { display: grid; gap: 10px; padding: 0 10px; grid-template-columns: repeat(3, 1fr); }
         @media (min-width: 1024px) { .poster-grid { grid-template-columns: repeat(6, 1fr); } }
-        .poster-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; }
-        .poster-card:active { transform: scale(0.95); }
+        .poster-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; cursor: pointer; }
         .poster-card img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
         .poster-info { padding: 6px; text-align: center; }
         .poster-info h3 { font-size: 11px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         /* প্লেয়ার পেজ */
-        .player-container { padding: 20px; text-align: center; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .back-btn { text-align: left; padding: 15px; color: var(--primary); cursor: pointer; font-weight: bold; font-size: 18px; }
-        .video-preview { width: 100%; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; }
-        .play-now-btn { background: var(--primary); color: white; padding: 15px 40px; border-radius: 30px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        .player-container { padding: 20px; text-align: center; }
+        .back-btn { text-align: left; padding: 15px; color: var(--primary); cursor: pointer; font-weight: bold; }
+        .video-preview { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+        .play-now-btn { background: var(--primary); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; }
 
         /* সার্চ ও ক্যাটাগরি */
         .search-container { padding: 20px; text-align: center; }
-        .search-box { width: 100%; max-width: 500px; padding: 14px 20px; border-radius: 30px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; }
+        .search-box { width: 100%; padding: 12px; border-radius: 25px; border: 1px solid #333; background: #1a1a1a; color: white; }
         .category-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 15px; justify-content: center; }
-        .cat-btn { background: #1a1a1a; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #333; cursor: pointer; color: #fff; transition: 0.3s; }
+        .cat-btn { background: #1a1a1a; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #333; cursor: pointer; color: #fff; }
         .cat-btn.active-cat { background: var(--primary); border-color: var(--primary); }
 
         /* প্রোফাইল */
-        .profile-header { background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%); padding: 30px 20px; text-align: center; border-bottom: 1px solid #222; }
+        .profile-header { padding: 30px; text-align: center; border-bottom: 1px solid #222; }
         .user-avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary); margin: 0 auto 10px; overflow: hidden; }
-        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .user-avatar img { width: 100%; height: 100%; }
 
         /* বটম ন্যাভ */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 65px; background: #0a0a0a; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #222; z-index: 1000; }
-        .nav-item { color: #888; text-align: center; font-size: 11px; cursor: pointer; flex: 1; transition: 0.3s; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 65px; background: #0a0a0a; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #222; }
+        .nav-item { color: #888; text-align: center; font-size: 11px; cursor: pointer; }
         .nav-item.active { color: var(--primary); }
-        .nav-icon { font-size: 20px; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -69,31 +65,29 @@
             </div>
         </div>
         <div class="section-title">Trending Now</div>
-        <div class="poster-grid" id="main-grid">ডেটা লোড হচ্ছে...</div>
+        <div class="poster-grid" id="main-grid">লোড হচ্ছে...</div>
     </div>
 
     <!-- Player Page -->
     <div id="player-page" class="page">
-        <div class="back-btn" onclick="showPage('home')">⬅️ ফিরে যান</div>
+        <div class="back-btn" onclick="showPage('home')">⬅️ Back</div>
         <div class="player-container">
             <img id="display-img" class="video-preview" src="">
-            <h2 id="display-title" style="margin-bottom: 10px;">Anime Title</h2>
-            <p id="display-genre" style="color: #888; margin-bottom: 20px; font-size: 14px;"></p>
+            <h2 id="display-title"></h2>
+            <p id="display-genre" style="color:#888;"></p>
             <a href="" id="display-link" class="play-now-btn">WATCH NOW</a>
         </div>
     </div>
 
     <!-- Search Page -->
     <div id="search" class="page">
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="এনিমে খুঁজুন..." id="searchInput" oninput="filterSearch()">
-        </div>
+        <div class="search-container"><input type="text" class="search-box" placeholder="Search anime..." id="searchInput" oninput="filterSearch()"></div>
         <div class="poster-grid" id="search-results"></div>
     </div>
 
     <!-- Category Page -->
     <div id="category" class="page">
-        <div class="section-title">সব ক্যাটাগরি</div>
+        <div class="section-title">Categories (Select Multiple)</div>
         <div class="category-list" id="genre-buttons"></div>
         <div class="poster-grid" id="category-results"></div>
     </div>
@@ -102,19 +96,17 @@
     <div id="profile" class="page">
         <div class="profile-header">
             <div class="user-avatar"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="avatar-img"></div>
-            <div id="user-full-name" style="font-size: 18px; font-weight: bold;">Guest User</div>
+            <div id="user-full-name">Guest User</div>
         </div>
-        <div style="text-align:center; padding:40px;">
-            <button onclick="tg.close()" style="background:var(--primary); color:white; border:none; padding:12px 30px; border-radius:30px; font-weight: bold;">Exit App</button>
-        </div>
+        <div style="text-align:center; padding:20px;"><button onclick="tg.close()" style="background:var(--primary); color:#fff; border:none; padding:10px 20px; border-radius:20px;">Exit</button></div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom Nav -->
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="showPage('home', this)"><div class="nav-icon">🏠</div>Home</div>
-        <div class="nav-item" onclick="showPage('search', this)"><div class="nav-icon">🔍</div>Search</div>
-        <div class="nav-item" onclick="showPage('category', this)"><div class="nav-icon">🎬</div>Category</div>
-        <div class="nav-item" onclick="showPage('profile', this)"><div class="nav-icon">👤</div>Profile</div>
+        <div class="nav-item active" onclick="showPage('home', this)">🏠<br>Home</div>
+        <div class="nav-item" onclick="showPage('search', this)">🔍<br>Search</div>
+        <div class="nav-item" onclick="showPage('category', this)">🎬<br>Category</div>
+        <div class="nav-item" onclick="showPage('profile', this)">👤<br>Profile</div>
     </div>
 
     <script>
@@ -122,112 +114,95 @@
         tg.expand();
 
         let animeData = [];
+        let selectedGenres = []; // এখানে ইউজারের সিলেক্ট করা ক্যাটাগরি থাকবে
+
         const genresList = [
-            "All", "Shonen", "Shojo", "Seinen", "Josei", "Kodomomuke", 
-            "Action", "Adventure", "Comedy", "Drama", "Fantasy", 
-            "Horror", "Mystery", "Romance", "Sci-Fi", "Slice of Life", 
-            "Sports", "Isekai", "Mecha", "Ecchi", "Harem", "Magical Girl", 
-            "Iyashikei", "Psychological", "Cyberpunk", "Survival", "Gourmet", "Avant Garde"
+            "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", 
+            "Romance", "Sci-Fi", "Slice of Life", "Sports", "Isekai", "Harem", "School"
         ];
 
-        const databaseUrl = 'https://raw.githubusercontent.com/anmtubebd/anm-tube/main/data.json';
-
-        // ডাটাবেস থেকে ডেটা আনা
         async function fetchAnimeData() {
             try {
-                const response = await fetch(databaseUrl + '?v=' + new Date().getTime());
-                const rawData = await response.json();
-                
-                // ভ্যালিডেশন: অসম্পূর্ণ বা ভুল ডেটা ফিল্টার করা
-                animeData = rawData.filter(item => item.title && item.img && item.title !== "????? ?????");
-                
+                const response = await fetch('https://raw.githubusercontent.com/anmtubebd/anm-tube/main/data.json?v=' + new Date().getTime());
+                animeData = await response.json();
                 loadGrid(animeData, 'main-grid');
                 renderGenreButtons();
-            } catch (error) {
-                document.getElementById('main-grid').innerText = "ডেটা লোড করা যাচ্ছে না।";
-            }
+            } catch (e) { console.log(e); }
         }
 
-        // ক্যাটাগরি বাটন তৈরি
         function renderGenreButtons() {
-            const btnContainer = document.getElementById('genre-buttons');
-            btnContainer.innerHTML = genresList.map(g => `
-                <div class="cat-btn ${g === 'All' ? 'active-cat' : ''}" onclick="filterCategory('${g}', this)">${g}</div>
+            const container = document.getElementById('genre-buttons');
+            container.innerHTML = genresList.map(g => `
+                <div class="cat-btn ${selectedGenres.includes(g) ? 'active-cat' : ''}" onclick="toggleGenre('${g}', this)">${g}</div>
             `).join('');
         }
 
-        // গ্রিড লোড করা
-        function loadGrid(data, containerId) {
-            const container = document.getElementById(containerId);
-            if(data.length === 0) {
-                container.innerHTML = "<p style='grid-column: 1/-1; text-align:center; padding:20px; color:#666;'>কিছু পাওয়া যায়নি</p>";
-                return;
+        // মাল্টি-সিলেকশন লজিক
+        function toggleGenre(genre, btn) {
+            if (selectedGenres.includes(genre)) {
+                selectedGenres = selectedGenres.filter(g => g !== genre);
+            } else {
+                selectedGenres.push(genre);
             }
+            renderGenreButtons();
+            applyCategoryFilter();
+        }
+
+        function applyCategoryFilter() {
+            let filtered = animeData;
+            if (selectedGenres.length > 0) {
+                filtered = animeData.filter(anime => {
+                    if (!anime.genre) return false;
+                    const animeGenres = anime.genre.split(',').map(g => g.trim());
+                    // চেক করবে সিলেক্ট করা সবগুলো জেনরা ওই এনিমেতে আছে কি না (AND Logic)
+                    return selectedGenres.every(sg => animeGenres.includes(sg));
+                });
+            }
+            loadGrid(filtered, 'category-results');
+        }
+
+        function loadGrid(data, id) {
+            const container = document.getElementById(id);
+            if (data.length === 0) { container.innerHTML = "<p style='grid-column:1/-1; text-align:center;'>No Anime Found</p>"; return; }
             container.innerHTML = data.map(item => `
-                <div class="poster-card" onclick="openPlayer('${item.title.replace(/'/g, "\\'")}', '${item.img}', '${item.link}', '${item.genre || ""}')">
+                <div class="poster-card" onclick="openPlayer('${item.title.replace(/'/g, "\\'")}', '${item.img}', '${item.link}', '${item.genre}')">
                     <img src="${item.img}">
                     <div class="poster-info"><h3>${item.title}</h3></div>
                 </div>
             `).join('');
         }
 
-        // পেজ পরিবর্তন
         function showPage(pageId, element) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            if(element) {
-                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            if (element) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 element.classList.add('active');
             }
-            if(pageId === 'category' && document.getElementById('category-results').innerHTML === "") {
-                filterCategory('All', document.querySelector('.cat-btn'));
-            }
+            if (pageId === 'category') applyCategoryFilter();
         }
 
-        // প্লেয়ার ওপেন
         function openPlayer(title, img, link, genre) {
             document.getElementById('display-title').innerText = title;
             document.getElementById('display-img').src = img;
-            document.getElementById('display-genre').innerText = "Category: " + (genre || "General");
+            document.getElementById('display-genre').innerText = genre;
             document.getElementById('display-link').href = link;
             showPage('player-page');
         }
 
-        // সার্চ লজিক
         function filterSearch() {
             const term = document.getElementById('searchInput').value.toLowerCase();
             const results = animeData.filter(a => a.title.toLowerCase().includes(term));
             loadGrid(results, 'search-results');
         }
 
-        // ক্যাটাগরি ফিল্টার (মাল্টি-জেনরা সাপোর্ট)
-        function filterCategory(selectedGenre, btn) {
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active-cat'));
-            btn.classList.add('active-cat');
-
-            const results = selectedGenre === 'All' ? animeData : animeData.filter(anime => {
-                if(!anime.genre) return false;
-                const genres = anime.genre.split(',').map(g => g.trim().toLowerCase());
-                return genres.includes(selectedGenre.toLowerCase());
-            });
-            loadGrid(results, 'category-results');
-        }
-
-        // স্লাইডার অটোমেশন
-        let slideIdx = 0;
+        // স্লাইডার
+        let idx = 0;
         setInterval(() => {
-            slideIdx = (slideIdx + 1) % 4;
-            const slider = document.getElementById('slider');
-            if(slider) slider.style.transform = `translateX(-${slideIdx * 25}%)`;
-        }, 4000);
-
-        // টেলিগ্রাম ইউজার ডেটা
-        if(tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('user-full-name').innerText = tg.initDataUnsafe.user.first_name + " " + (tg.initDataUnsafe.user.last_name || "");
-            if(tg.initDataUnsafe.user.photo_url) {
-                document.getElementById('avatar-img').src = tg.initDataUnsafe.user.photo_url;
-            }
-        }
+            idx = (idx + 1) % 4;
+            const s = document.getElementById('slider');
+            if(s) s.style.transform = `translateX(-${idx * 25}%)`;
+        }, 3000);
 
         window.onload = fetchAnimeData;
     </script>
