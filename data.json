@@ -6,34 +6,9 @@
         "link": "https://t.me/your_video_link_1"
     },
     {
-        "title": "Naruto",
-        "img": "https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00YzQ4LWE3ZTEtZWMzOTdmN2Y5YWNmXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg",
-        "genre": "Action, Shonen, Martial Arts",
-        "link": "https://t.me/your_video_link_2"
-    },
-    {
         "title": "Alya",
         "img": "https://m.media-amazon.com/images/M/MV5BNjg0YTVjNTItZTI1ZC00MDZlLTllYjQtMDY0ODMxNDdlYjY3XkEyXkFqcGc@._V1_.jpg",
         "genre": "Romance, School, Slice of Life",
         "link": "https://t.me/theanmking"
-    },
-    {
-        "title": "Solo Leveling",
-        "img": "[https://images.com/banner.jpg](https://images.com/banner.jpg)",
-        "genre": "Banner",
-        "link": "[https://watch.com/solo](https://watch.com/solo)"
-    },
-    {
-        "title": "Anime",
-        "img": "[https://i.ytimg.com/vi/l6qaZazlciI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCKCIMWTRgB57z0lgL_vpmnbe4wRw]",
-        "genre": "Banner",
-        "link": "[https://watch.com/solo](https://watch.com/solo)"
-    },
-    {
-        "title": "Anime",
-        "img": "[https://i.ytimg.com/vi/l6qaZazlciI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCKCIMWTRgB57z0lgL_vpmnbe4wRw](https://i.ytimg.com/vi/l6qaZazlciI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCKCIMWTRgB57z0lgL_vpmnbe4wRw)",
-        "genre": "Banner",
-        "link": "[https://watch.com/solo](https://watch.com/solo)"
     }
-
 ]
