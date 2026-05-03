@@ -22,38 +22,26 @@
             border-bottom: 1px solid #222;
         }
 
-        /* মোবাইলের জন্য স্লাইডার (অপরিবর্তিত) */
+        /* মোবাইলের জন্য স্লাইডার */
         @media (max-width: 767px) {
-            .slider-container {
-                aspect-ratio: 16 / 9; 
-            }
+            .slider-container { aspect-ratio: 16 / 9; }
         }
 
-        /* ল্যাপটপের জন্য স্লাইডার ফিক্স (আপনার ছবি অনুযায়ী সংশোধিত) */
+        /* ল্যাপটপের জন্য স্লাইডার ফিক্স */
         @media (min-width: 1024px) { 
             .slider-container { 
-                max-width: 1000px; /* ল্যাপটপে ব্যানার এরিয়া নির্দিষ্ট করা হলো */
+                max-width: 1000px; 
                 margin: 15px auto; 
-                height: 380px; /* ল্যাপটপে হাইট ফিক্সড করা হয়েছে যাতে কেটে না যায় */
+                height: 380px; 
                 border-radius: 12px;
             } 
         }
 
         .slider { display: flex; height: 100%; transition: transform 0.5s ease-in-out; width: 100%; }
         .slide { min-width: 100%; height: 100%; cursor: pointer; }
-        
-        .slide img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-        }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ল্যাপটপে যাতে ইমেজের লেখা বা মূল অংশ না কাটে */
-        @media (min-width: 1024px) {
-            .slide img {
-                object-fit: fill; /* ল্যাপটপে পুরো ইমেজটি ফ্রেমের ভেতর দেখাবে */
-            }
-        }
+        @media (min-width: 1024px) { .slide img { object-fit: fill; } }
 
         /* গ্রিড ডিজাইন */
         .section-title { padding: 15px; font-size: 18px; font-weight: bold; color: var(--primary); }
@@ -64,15 +52,20 @@
         .poster-info { padding: 6px; text-align: center; }
         .poster-info h3 { font-size: 11px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+        /* প্লেয়ার পেজ স্টাইল */
+        .player-container { padding: 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .video-preview { width: 100%; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .anime-meta { text-align: left; background: #121212; padding: 15px; border-radius: 12px; margin-bottom: 20px; }
+        .anime-meta h2 { margin: 0 0 10px 0; color: var(--primary); font-size: 22px; }
+        .rating-stars { color: #ffca28; margin-bottom: 10px; font-size: 18px; }
+        .synopsis { font-size: 14px; color: #ccc; line-height: 1.5; margin-bottom: 15px; }
+        .ep-count { display: inline-block; background: #333; padding: 4px 10px; border-radius: 5px; font-size: 12px; margin-bottom: 10px; }
+        .play-now-btn { background: var(--primary); color: white; padding: 15px 50px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 16px; transition: 0.3s; }
+
         /* বটম ন্যাভ */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 65px; background: #0a0a0a; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #222; z-index: 1000; }
         .nav-item { color: #888; text-align: center; font-size: 11px; cursor: pointer; }
         .nav-item.active { color: var(--primary); }
-
-        /* প্লেয়ার পেজ */
-        .player-container { padding: 20px; text-align: center; }
-        .video-preview { width: 100%; border-radius: 12px; margin-bottom: 20px; max-width: 600px; }
-        .play-now-btn { background: var(--primary); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -89,8 +82,13 @@
         <div style="padding:15px; cursor:pointer;" onclick="showPage('home')">⬅️ Back</div>
         <div class="player-container">
             <img id="display-img" class="video-preview" src="">
-            <h2 id="display-title"></h2>
-            <p id="display-genre" style="color:#888;"></p>
+            <div class="anime-meta">
+                <h2 id="display-title"></h2>
+                <div id="display-stars" class="rating-stars"></div>
+                <div id="display-episodes" class="ep-count"></div>
+                <p id="display-genre" style="color:var(--primary); font-size: 13px; margin: 5px 0;"></p>
+                <p id="display-synopsis" class="synopsis"></p>
+            </div>
             <a href="" id="display-link" class="play-now-btn">WATCH NOW</a>
         </div>
     </div>
@@ -125,7 +123,7 @@
                 const banners = animeData.filter(item => item.genre && item.genre.includes("Banner"));
                 const slider = document.getElementById('main-slider');
                 if(banners.length > 0) {
-                    slider.innerHTML = banners.map(b => `<div class="slide" onclick="openPlayer('${b.title.replace(/'/g, "\\'")}', '${b.img}', '${b.link}', '${b.genre}')"><img src="${b.img}"></div>`).join('');
+                    slider.innerHTML = banners.map(b => `<div class="slide" onclick="openPlayer(${JSON.stringify(b).replace(/"/g, '&quot;')})"><img src="${b.img}"></div>`).join('');
                     startSlider(banners.length);
                 }
 
@@ -139,25 +137,47 @@
             let i = 0;
             setInterval(() => {
                 i = (i + 1) % count;
-                document.getElementById('main-slider').style.transform = `translateX(-${i * 100}%)`;
+                const slider = document.getElementById('main-slider');
+                if(slider) slider.style.transform = `translateX(-${i * 100}%)`;
             }, 5000);
         }
 
         function loadGrid(data, id) {
             const container = document.getElementById(id);
             container.innerHTML = data.map(item => `
-                <div class="poster-card" onclick="openPlayer('${item.title.replace(/'/g, "\\'")}', '${item.img}', '${item.link}', '${item.genre}')">
+                <div class="poster-card" onclick="openPlayer(${JSON.stringify(item).replace(/"/g, '&quot;')})">
                     <img src="${item.img}">
                     <div class="poster-info"><h3>${item.title}</h3></div>
                 </div>
             `).join('');
         }
 
-        function openPlayer(title, img, link, genre) {
-            document.getElementById('display-title').innerText = title;
-            document.getElementById('display-img').src = img;
-            document.getElementById('display-genre').innerText = "Genres: " + (genre || "N/A");
-            document.getElementById('display-link').href = link;
+        function openPlayer(item) {
+            document.getElementById('display-title').innerText = item.title;
+            document.getElementById('display-img').src = item.img;
+            document.getElementById('display-link').href = item.link;
+            
+            // জেনরা সেকশন
+            document.getElementById('display-genre').innerText = item.genre ? "Genres: " + item.genre : "";
+
+            // স্টার রেটিং লজিক
+            const starContainer = document.getElementById('display-stars');
+            starContainer.innerHTML = "";
+            if(item.rating && !isNaN(item.rating)) {
+                let stars = "";
+                for(let i=0; i<parseInt(item.rating); i++) { stars += "⭐"; }
+                starContainer.innerHTML = stars;
+            }
+
+            // এপিসোড সেকশন (যদি থাকে)
+            const epElem = document.getElementById('display-episodes');
+            epElem.style.display = item.episodes ? "inline-block" : "none";
+            epElem.innerText = item.episodes ? "Episodes: " + item.episodes : "";
+
+            // সিনোপসিস সেকশন (যদি থাকে)
+            const synElem = document.getElementById('display-synopsis');
+            synElem.innerText = item.synopsis || "";
+            
             showPage('player-page');
         }
 
@@ -171,9 +191,7 @@
         function toggleGenre(genre, btn) {
             if (selectedGenres.includes(genre)) selectedGenres = selectedGenres.filter(g => g !== genre);
             else selectedGenres.push(genre);
-            
-            if(selectedGenres.includes(genre)) btn.style.background = "#ff3e3e";
-            else btn.style.background = "#1a1a1a";
+            btn.style.background = selectedGenres.includes(genre) ? "#ff3e3e" : "#1a1a1a";
 
             const listData = animeData.filter(item => !item.genre || !item.genre.includes("Banner"));
             let filtered = listData.filter(anime => {
